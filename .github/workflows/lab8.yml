@@ -11,7 +11,7 @@ jobs:
       LUCKY_NUMBER: ${{ steps.lucky_number_step.outputs.LUCKY_NUMBER }}
     steps:
       - name: Set environment variable with "key" as "foo" and "value" as "bar" 
-        run: echo "$foo=bar" >> $GITHIB_ENV
+        run: echo "$foo=bar" >> "$GITHUB_ENV"
 
       - name: Echo the environment variable "foo" from previous step
         run: echo "Hello, ${{ github.env.foo }}"
@@ -28,7 +28,7 @@ jobs:
         run: echo "::warning ::This is a warning message."
 
       - name: Create an error annotation with following parameters, file=app.py line=49 message=nullValue 
-        run: echo "::error file=app.py,line=49::nullValue "
+        run: echo "::error file=app.py,line=49::message=nullValue "
 
       - name: Set an output with "key" as "LUCKY_NUMBER" and "value" as "1234567"
         id: lucky_number_step
