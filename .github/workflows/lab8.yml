@@ -11,7 +11,7 @@ jobs:
       LUCKY_NUMBER: ${{ steps.lucky_number_step.outputs.LUCKY_NUMBER }}
     steps:
       - name: Set environment variable with "key" as "foo" and "value" as "bar" 
-        run: echo "$foo=bar" >> "$GITHUB_ENV"
+        run: echo "foo=bar" >> "$GITHUB_ENV"
 
       - name: Echo the environment variable "foo" from previous step
         run: echo "Hello, ${{ github.env.foo }}"
@@ -32,7 +32,7 @@ jobs:
 
       - name: Set an output with "key" as "LUCKY_NUMBER" and "value" as "1234567"
         id: lucky_number_step
-        run: echo "$LUCKY_NUMBER=1234567" >> $GITHUB_OUTPUT
+        run: echo "LUCKY_NUMBER=1234567" >> $GITHUB_OUTPUT
 
       - name: Echo the output set in the previous step
         run: echo "My lucky number is ${{ github.jobs.outputs.LUCKY_NUMBER }}"
