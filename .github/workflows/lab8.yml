@@ -14,7 +14,7 @@ jobs:
         run: echo "foo=bar" >> "$GITHUB_ENV"
 
       - name: Echo the environment variable "foo" from previous step
-        run: echo "Hello, ${{ github.env.foo }}"
+        run: echo "Hello, ${{ env.foo }}"
 
       - name: Mask the "api_key" within this steps's environment variable and echo it
         env:
@@ -25,7 +25,7 @@ jobs:
           echo "Masked key = $api_key"
 
       - name: Create a warning Log for this message "This is a warning message."
-        run: echo "::warning ::This is a warning message."
+        run: echo "::warning::This is a warning message."
 
       - name: Create an error annotation with following parameters, file=app.py line=49 message=nullValue 
         run: echo "::error file=app.py,line=49::message=nullValue "
@@ -35,7 +35,7 @@ jobs:
         run: echo "LUCKY_NUMBER=1234567" >> $GITHUB_OUTPUT
 
       - name: Echo the output set in the previous step
-        run: echo "My lucky number is ${{ github.jobs.outputs.LUCKY_NUMBER }}"
+        run: echo "My lucky number is ${{ steps.lucky_number_step.outputs.LUCKY_NUMBER }}"
 
       - name: Create a Job Summary as "Exploring Workflow Commands :thumbsup:"
         run: echo "Exploring Workflow Commands :thumbsup:" >> $GITHUB_STEP_SUMMARY
